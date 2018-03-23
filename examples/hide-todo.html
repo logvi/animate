@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>hide-todo.js - example - rc-animate@2.3.6</title>
+  <title>hide-todo.js - example - inferno-animate@1.0.0</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -263,9 +263,9 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
   <div class="container">
     <div class="header">
-      <h1>rc-animate@2.3.6</h1>
+      <h1>inferno-animate@1.0.0</h1>
 
-      <p>css-transition ui component for react</p>
+      <p>css-transition ui component for Inferno</p>
     </div>
     <div class="example" id="__react-content"></div>
 
@@ -276,7 +276,6 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <span class="hljs-keyword">import</span> PropTypes <span class="hljs-keyword">from</span> <span class="hljs-string">'prop-types'</span>;
 <span class="hljs-keyword">import</span> ReactDOM <span class="hljs-keyword">from</span> <span class="hljs-string">'react-dom'</span>;
 <span class="hljs-keyword">import</span> Animate <span class="hljs-keyword">from</span> <span class="hljs-string">'rc-animate'</span>;
-<span class="hljs-keyword">import</span> assign <span class="hljs-keyword">from</span> <span class="hljs-string">'object-assign'</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Todo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   static propTypes = {
@@ -305,7 +304,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
       padding: <span class="hljs-number">10</span>,
       margin: <span class="hljs-number">10</span>,
     };
-    <span class="hljs-keyword">return</span> (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>
+    <span class="hljs-keyword">return</span> (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>
       <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.props.onClick}</span>
       <span class="hljs-attribute">style</span>=<span class="hljs-value">{style}</span>
     &gt;</span>
@@ -326,20 +325,16 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   handleHide = (i, item) =&gt; {
     <span class="hljs-keyword">const</span> newItems = <span class="hljs-keyword">this</span>.state.items.concat([]);
     newItems.forEach((n, index) =&gt; {
-      newItems[index] = assign({}, n, {
-        visible: <span class="hljs-literal">true</span>,
-      });
+      newItems[index] = { ...n, visible: <span class="hljs-literal">true</span> };
     });
-    newItems[i] = assign({}, item, {
-      visible: <span class="hljs-literal">false</span>,
-    });
+    newItems[i] = { ...item, visible: <span class="hljs-literal">false</span> };
     <span class="hljs-keyword">this</span>.setState({ items: newItems });
   }
 
   render() {
     <span class="hljs-keyword">const</span> items = <span class="hljs-keyword">this</span>.state.items.map((item, i) =&gt; {
       <span class="hljs-keyword">return</span> (
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Todo</span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Todo</span>
           <span class="hljs-attribute">key</span>=<span class="hljs-value">{item.content}</span>
           <span class="hljs-attribute">visible</span>=<span class="hljs-value">{item.visible}</span>
           <span class="hljs-attribute">onClick</span>=<span class="hljs-value">{this.handleHide.bind(this,</span> <span class="hljs-attribute">i</span>, <span class="hljs-attribute">item</span>)}
@@ -350,7 +345,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     });
     <span class="hljs-keyword">return</span> (
       <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">Animate</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">Animate</span>
           <span class="hljs-attribute">showProp</span>=<span class="hljs-value">"visible"</span>
           <span class="hljs-attribute">transitionName</span>=<span class="hljs-value">"fade"</span>
         &gt;</span>
@@ -370,14 +365,14 @@ ReactDOM.render(
 );
 </span></code></pre></div>
   </div>
-  <a href="https://github.com/react-component/animate">
+  <a href="https://github.com/logvi/inferno-animate">
     <img style="position: absolute; top: 0; right: 0; border: 0;"
          src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
          alt="Fork me on GitHub"
          data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
   </a>
   <script>FastClick.attach(document.body);</script>
-  <script src="common.js?nowrap"></script>
+  <script src="../common.js?nowrap"></script>
   <script src="hide-todo.js?nowrap"></script>
 </body>
 
