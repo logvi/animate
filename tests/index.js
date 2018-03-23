@@ -1,3 +1,5 @@
-require('./single.spec');
-require('./single-animation.spec');
-require('./multiple.spec');
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+import './single.spec';
+import './single-animation.spec';
+import './multiple.spec';

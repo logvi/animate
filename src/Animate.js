@@ -27,6 +27,8 @@ function noop() {
 }
 
 export default class Animate extends React.Component {
+  static isAnimate = true; // eslint-disable-line
+
   static propTypes = {
     component: PropTypes.any,
     componentProps: PropTypes.object,
@@ -44,6 +46,7 @@ export default class Animate extends React.Component {
     onLeave: PropTypes.func,
     onAppear: PropTypes.func,
     showProp: PropTypes.string,
+    children: PropTypes.node,
   }
 
   static defaultProps = {
@@ -67,7 +70,7 @@ export default class Animate extends React.Component {
     this.keysToLeave = [];
 
     this.state = {
-      children: toArrayChildren(getChildrenFromProps(this.props)),
+      children: toArrayChildren(getChildrenFromProps(props)),
     };
 
     this.childrenRefs = {};
